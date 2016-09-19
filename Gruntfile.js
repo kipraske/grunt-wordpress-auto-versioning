@@ -30,20 +30,16 @@ module.exports = function(grunt) {
 
     // Configuration to be run (and then tested).
     wordpress_auto_versioning: {
-      default_options: {
-        options: {
-        },
+      test_sass_file: {
+        options: {},
         files: {
-          'tmp/default_options': ['test/fixtures/testing', 'test/fixtures/123']
+          'tmp/test_sass_file': 'test/fixtures/style.scss'
         }
       },
-      custom_options: {
-        options: {
-          separator: ': ',
-          punctuation: ' !!!'
-        },
+      test_plugin_file: {
+        options: {},
         files: {
-          'tmp/custom_options': ['test/fixtures/testing', 'test/fixtures/123']
+          'tmp/test_plugin_file': 'test/fixtures/plugin.php'
         }
       }
     },

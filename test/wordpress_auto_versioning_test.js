@@ -27,21 +27,21 @@ exports.wordpress_auto_versioning = {
     // setup here if necessary
     done();
   },
-  default_options: function(test) {
+  test_sass_file: function(test) {
     test.expect(1);
 
-    var actual = grunt.file.read('tmp/default_options');
-    var expected = grunt.file.read('test/expected/default_options');
-    test.equal(actual, expected, 'should describe what the default behavior is.');
+		var actual = grunt.file.read('tmp/test_sass_file');
+		var expected = grunt.file.read('text/expected/test_sass_file');
+		test.equal(actual, expected, 'Should replace the version line in the top comments with appended content');
 
     test.done();
   },
-  custom_options: function(test) {
+  test_plugin_file: function(test) {
     test.expect(1);
 
-    var actual = grunt.file.read('tmp/custom_options');
-    var expected = grunt.file.read('test/expected/custom_options');
-    test.equal(actual, expected, 'should describe what the custom option(s) behavior is.');
+    var actual = grunt.file.read('tmp/test_plugin_file');
+    var expected = grunt.file.read('test/expected/test_plugin_file');
+    test.equal(actual, expected, 'Should replace the version line in the top comments with appended content');
 
     test.done();
   },

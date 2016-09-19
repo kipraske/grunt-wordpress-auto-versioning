@@ -1,0 +1,80 @@
+/*!
+Theme Name: WashU Diversity Theme
+Theme URI: http://wustl.edu
+Author: WUSTL PA Digital Team
+Author URI: https://publicaffairs.wustl.edu/about/our-team
+Description: A starter theme, derived from the underscores theme, with WashU brand standards and universal theme elements
+Version: 1.2.0
+License: GNU General Public License
+License URI: license.txt
+Text Domain: washu-diversity
+Domain Path: /_lang/
+Tags: responsive, HTML5, WashU
+
+This theme, like WordPress, is licensed under the GPL.
+Use it to make something cool, have fun, and share what you've learned with others.
+
+**** **** **** **** **** **** **** **** **** **** ****
+   WHOA, BUSTER!
+   THIS STYLESHEET WAS BUILT USING SASS.
+   IF YOU KNOW SASS, AND WANT TO CONTINUE USING
+   SASS ON THIS STYLESHEET, DON'T EDIT THIS FILE!
+
+   .scss files are located in _assets/sass/
+
+**** **** **** **** **** **** **** **** **** **** ****
+
+WashU Diversity Theme is based on Underscores http://underscores.me/, (C) 2012-2014 Automattic, Inc.
+
+Resetting and rebuilding styles have been helped along thanks to the fine work of
+Eric Meyer http://meyerweb.com/eric/tools/css/reset/index.html
+along with Nicolas Gallagher and Jonathan Neal http://necolas.github.com/normalize.css/
+and Blueprint http://www.blueprintcss.org/
+*/
+
+/**
+ * Core variables and mixins
+ */
+
+/* Globals */
+@import "washu-brand";
+@import "variables";
+@import "mixins";
+
+/**
+ * RESET
+ */
+@import "normalize";
+
+/**
+ * PROJECT COMPONENTS
+ */
+@import "global";
+@import "forms";
+@import "layout";
+@import "bands";
+@import "cards";
+@import "grid";
+@import "item-grid";
+@import "nav";
+@import "content";
+@import "buttons";
+@import "media";
+@import "events";
+@import "event-cards";
+@import "header";
+@import "filter-controls";
+@import "footer";
+@import "galleries";
+@import "profiles";
+@import "page-heros";
+@import "story-cards";
+@import "comments";
+@import "infscroll";
+@import "lists";
+@import "widgets";
+
+/**
+ * Modifiers
+ */
+@import "bg-colors"
