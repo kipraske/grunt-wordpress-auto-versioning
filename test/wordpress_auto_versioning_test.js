@@ -31,7 +31,7 @@ exports.wordpress_auto_versioning = {
     test.expect(1);
 
 		var actual = grunt.file.read('tmp/test_sass_file');
-		var expected = grunt.file.read('text/expected/test_sass_file');
+		var expected = grunt.file.read('test/expected/test_sass_file');
 		test.equal(actual, expected, 'Should replace the version line in the top comments with appended content');
 
     test.done();

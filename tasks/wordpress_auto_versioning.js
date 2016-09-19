@@ -42,7 +42,7 @@ module.exports = function(grunt) {
 			// We need to get the first "Version" that is likely in a comment in the file
 			// There probably is a "*" at the start of the version line block but not necessarily.
 			// Also assuming our version starts with one or more numbers. This helps avoid false positives.
-			var wordpressVersionRegex = /^\s*\*?\s*Version:\s*\d+.*$/i;
+			var wordpressVersionRegex = /^\s*\*?\s*Version:\s*\d+.*$/im;
 
 			// Sanity Check
 			var matches = wordpressVersionRegex.exec(fileContents);
