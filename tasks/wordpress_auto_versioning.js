@@ -9,11 +9,11 @@
 'use strict';
 
 module.exports = function(grunt) {
-
   // Please see the Grunt documentation for more information regarding task
   // creation: http://gruntjs.com/creating-tasks
 
   grunt.registerMultiTask('wordpress_auto_versioning', 'Adds the current commit number to the version of a wordpress theme. Useful for development keeping track of which version is on which environment while we are in alpha.', function() {
+		
     // Merge task-specific and/or target-specific options with these defaults.
     var options = this.options({
 			// Any option defaults go here
@@ -46,7 +46,7 @@ module.exports = function(grunt) {
 			var wordpressVersionRegex = /^\s*\*?\s*Version:\s*\d+.*$/i;
 
 			// Sanity Check
-			var matches = wordpressVersionRegex.exec(src);
+			var matches = wordpressVersionRegex.exec(fileContents);
 			if ( ! matches ) {
 				grunt.log.warn( 'Version declaration line not found in ' + filepath );
 				return false;
@@ -56,10 +56,10 @@ module.exports = function(grunt) {
 			var currentGitCommit = "TEST";
 			var currentVersionLine = matches[0];
 			var newVersionLine = currentVersionLine + '-' + currentGitCommit;
-			src.replace( wordpressVersionRegex, newVersionLine );
+			var newFileContents = fileContents.replace( wordpressVersionRegex, newVersionLine );
 
       // Write the destination file.
-      grunt.file.write(f.dest, src);
+      grunt.file.write(f.dest, newFileContents);
 
       // Print a success message.
       grunt.log.writeln('File "' + f.dest + '" written using commit: ' + currentGitCommit);
