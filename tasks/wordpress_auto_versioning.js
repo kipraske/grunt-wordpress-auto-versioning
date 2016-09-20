@@ -20,15 +20,8 @@ module.exports = function(grunt) {
 			// Long vs Short Commit values for example... Incrementing?
     });
 
-		var currentGitCommit = '';
-
 		// Get the most recent git commit using the shell
-		require('child_process').exec('git rev-parse --short HEAD', function(err, stdout, stderr){
-			if (err || stderr){
-				grunt.log.error('There was a problem reading the git repository. Please run grunt from the same repo your git repo is in');
-			}
-			currentGitCommit = stdout;
-		});
+		var currentGitCommit = require('child_process').execSync('git rev-parse --short HEAD').toString().trim();
 
     // Iterate over all specified file groups.
     this.files.forEach(function(f) {
