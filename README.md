@@ -91,4 +91,19 @@ It is worth mentioning that the grunt plugin uses unit tests to ensure that the 
 
 To work around this there is a method in the gruntfile that makes a copy of the git database and uses that instead of the main one. This is the main reason that I have allowed users to tweak the working directory that we are looking at the git commits, though possibly that could be useful to someone. When adding functionality keep in mind that we are testing with this copied git repository rather than any repository actually hooked up with code.
 
+### Reinventing the Wheel
+
+This is a bit of a very specific thing that our team does to keep track of wordpress themes and plugins. You could probably accomplish the same sort of things using the following existing tools, but probably not all at once like we are here.
+
+- [git-rev](https://github.com/tblobaum/git-rev)
+- [grunt-text-replace](https://github.com/yoniholmes/grunt-text-replace)
+
+### Platforms Supported
+
+Currently because I am calling git straight from the command line, this likely will only work on Posix systems. We can likely get around this if necessary by using this instead:
+
+- [node-git](https://github.com/nodegit/nodegit)
+
+Though if you are that determined it may be better worth your time to use node-git to improve the git-rev library mentioned above.
+
 ## Release History
