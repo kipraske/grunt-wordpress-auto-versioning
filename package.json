@@ -1,5 +1,5 @@
 {
-  "name": "grunt-wordpress-auto-versioning",
+  "name": "grunt-wordpress-git-hash-versioning",
   "description": "Adds the current commit number to the version of a wordpress theme. Useful for development keeping track of which version is on which environment while we are in alpha.",
   "version": "0.1.0",
   "homepage": "https://github.com/kipraske/grunt-wordpress-auto-versioning",
@@ -10,15 +10,15 @@
   },
   "repository": {
     "type": "git",
-    "url": "git@github.com:kipraske/grunt-wordpress-auto-versioning.git"
+    "url": "git@github.com:kipraske/grunt-wordpress-git-hash-versioning.git"
   },
   "bugs": {
-    "url": "https://github.com/kipraske/grunt-wordpress-auto-versioning/issues"
+    "url": "https://github.com/kipraske/grunt-wordpress-git-hash-versioning/issues"
   },
   "licenses": [
     {
       "type": "GPLv3",
-      "url": "https://github.com/kipraske/grunt-wordpress-auto-versioning/blob/master/LICENSE-GPLv3"
+      "url": "https://github.com/kipraske/grunt-wordpress-git-hash-versioning/blob/master/LICENSE-GPLv3"
     }
   ],
   "engines": {
