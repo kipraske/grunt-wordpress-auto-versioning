@@ -1,6 +1,6 @@
 # grunt-wordpress-auto-versioning
 
-> Adds the current commit number to the version of a wordpress theme. Useful for development keeping track of which version is on which environment while we are in alpha.
+> Adds the current commit hash to the version of a WordPress theme. Useful for keeping track of which version is on which environment while we are still in development. This also works for plugin files too.
 
 ## Getting Started
 This plugin requires Grunt `~0.4.5`
@@ -25,65 +25,70 @@ In your project's Gruntfile, add a section named `wordpress_auto_versioning` to 
 ```js
 grunt.initConfig({
   wordpress_auto_versioning: {
-    options: {
-      // Task-specific options go here.
-    },
+    options: {},
     your_target: {
-      // Target-specific file lists and/or options go here.
+			files: 'destination-file' : 'source-file'
     },
   },
 });
 ```
+
+This will work for anything with the word "Version: #" up at the top of the document in a comment. We just replace the first instance of it, so if you are running it on a plugin or theme file that has this pattern in it you shouldn't run into any problems. Just don't run it on everything on your theme or you might end up with an unexpected false positive somewhere.
 
 ### Options
 
-#### options.separator
+gitDirectory: null,
+shortHash: true,
+
+#### options.gitDirectory
 Type: `String`
-Default value: `',  '`
+Default value: null
 
-A string value that is used to do something with whatever.
+A string value to the path of the directory you want to use for finding the current git commit. If this isn't set the current directory is used. This exists mostly for testing purposes.
 
-#### options.punctuation
-Type: `String`
-Default value: `'.'`
+#### options.shortHash
+Type: `boolean`
+Default value: `true`
 
-A string value that is used to do something else with whatever else.
+By default we get the short hash of the current commit to append to the version. If you set this to false the full sha hash will be used.
 
 ### Usage Examples
 
-#### Default Options
-In this example, the default options are used to do something with whatever. So if the `testing` file has the content `Testing` and the `123` file had the content `1 2 3`, the generated result would be `Testing, 1 2 3.`
+Most of the time we just need to just use the default values to append the shortened hash in a single file. If we are using a CSS pre-processor or post-processor make sure that we update the version before processing so we don't mess up the source maps
 
 ```js
 grunt.initConfig({
   wordpress_auto_versioning: {
-    options: {},
-    files: {
-      'dest/default_options': ['src/testing', 'src/123'],
-    },
-  },
+		dist: {
+			files: {
+				'_assets/sass/style.scss': '_assets/sass/style.scss'
+			},
+		}
+	}
 });
 ```
 
-#### Custom Options
-In this example, custom options are used to do something else with whatever else. So if the `testing` file has the content `Testing` and the `123` file had the content `1 2 3`, the generated result in this case would be `Testing: 1 2 3 !!!`
+We can do the same thing with the main file in a plugin.
 
 ```js
 grunt.initConfig({
   wordpress_auto_versioning: {
-    options: {
-      separator: ': ',
-      punctuation: ' !!!',
-    },
-    files: {
-      'dest/default_options': ['src/testing', 'src/123'],
-    },
-  },
+		dist: {
+			files: {
+				'myplugin.php': 'myplugin.php'
+			},
+		}
+	}
 });
 ```
 
 ## Contributing
 In lieu of a formal styleguide, take care to maintain the existing coding style. Add unit tests for any new or changed functionality. Lint and test your code using [Grunt](http://gruntjs.com/).
 
+### Unit Tests
+
+It is worth mentioning that the grunt plugin uses unit tests to ensure that the output code works properly. The tests have to work around the fact that we can't include a git repository in this codebase, and every time we commit something the commit hash will change. We don't want to have to change the expected output every time we commit something.
+
+To work around this there is a method in the gruntfile that makes a copy of the git database and uses that instead of the main one. This is the main reason that I have allowed users to tweak the working directory that we are looking at the git commits, though possibly that could be useful to someone. When adding functionality keep in mind that we are testing with this copied git repository rather than any repository actually hooked up with code.
+
 ## Release History
-_(Nothing yet)_
