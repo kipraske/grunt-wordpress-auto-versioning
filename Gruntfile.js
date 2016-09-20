@@ -31,13 +31,18 @@ module.exports = function(grunt) {
     // Configuration to be run (and then tested).
     wordpress_auto_versioning: {
       test_sass_file: {
-        options: {},
+        options: {
+					gitDirectory: 'test',
+					shortHash: false,
+				},
         files: {
           'tmp/test_sass_file': 'test/fixtures/style.scss'
         }
       },
       test_plugin_file: {
-        options: {},
+				options: {
+					gitDirectory: 'test',
+				},
         files: {
           'tmp/test_plugin_file': 'test/fixtures/plugin.php'
         }

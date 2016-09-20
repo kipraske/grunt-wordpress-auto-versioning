@@ -15,13 +15,23 @@ module.exports = function(grunt) {
   grunt.registerMultiTask('wordpress_auto_versioning', 'Adds the current commit number to the version of a wordpress theme. Useful for development keeping track of which version is on which environment while we are in alpha.', function() {
     // Merge task-specific and/or target-specific options with these defaults.
     var options = this.options({
-			// Any option defaults go here
-			// We don't have any options right now but I bet we will eventually
-			// Long vs Short Commit values for example... Incrementing?
+			gitDirectory: null,
+			shortHash: true,
     });
 
+		var revParseExecOptions = {};
+
+		if ( options.gitDirectory ){
+			revParseExecOptions.cwd = options.gitDirectory;
+		}
+
+		var shortFlag = '';
+		if ( options.shortHash ){
+			shortFlag = '--short';
+		}
+
 		// Get the most recent git commit using the shell
-		var currentGitCommit = require('child_process').execSync('git rev-parse --short HEAD').toString().trim();
+		var currentGitCommit = require('child_process').execSync('git rev-parse ' + shortFlag + ' HEAD', revParseExecOptions).toString().trim();
 
     // Iterate over all specified file groups.
     this.files.forEach(function(f) {
