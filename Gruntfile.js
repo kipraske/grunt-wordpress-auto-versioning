@@ -65,7 +65,7 @@ module.exports = function(grunt) {
 
 	// Yeah... this is not going to work for windows
 	// TODO - make more robust if someone wants this for windows
-	grunt.registerTask('setup-test-git-repo', 'Moves current repo into ./tmp so we can use its history for unit testing', function(){
+	grunt.registerTask('setup_test_git_repo', 'Moves current repo into ./tmp so we can use its history for unit testing', function(){
 		var shell = require('child_process');
 		grunt.file.mkdir('tmp/.git');
 		shell.execSync('cp -r .git/ tmp/.git/');
@@ -74,7 +74,7 @@ module.exports = function(grunt) {
 
   // Whenever the "test" task is run, first clean the "tmp" dir, then run this
   // plugin's task(s), then test the result.
-  grunt.registerTask('test', ['clean', 'setup-test-git-repo', 'wordpress_auto_versioning', 'nodeunit']);
+  grunt.registerTask('test', ['clean', 'setup_test_git_repo', 'wordpress_auto_versioning', 'nodeunit']);
 
   // By default, lint and run all tests.
   grunt.registerTask('default', ['jshint', 'test']);
