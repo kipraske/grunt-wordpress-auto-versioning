@@ -22,7 +22,7 @@ var grunt = require('grunt');
     test.ifError(value)
 */
 
-exports.wordpress_auto_versioning = {
+exports.wordpress_git_hash_versioning = {
   setUp: function(done) {
     // setup here if necessary
     done();

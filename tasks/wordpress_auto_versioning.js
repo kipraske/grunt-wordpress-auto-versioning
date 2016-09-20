@@ -12,7 +12,7 @@ module.exports = function(grunt) {
   // Please see the Grunt documentation for more information regarding task
   // creation: http://gruntjs.com/creating-tasks
 
-  grunt.registerMultiTask('wordpress_auto_versioning', 'Adds the current commit number to the version of a wordpress theme. Useful for development keeping track of which version is on which environment while we are in alpha.', function() {
+  grunt.registerMultiTask('wordpress_git_hash_versioning', 'Adds the current commit hash to the version of a WordPress theme CSS file or a plugin file. Useful for keeping track of which version is on which environment while we are still in development.', function() {
     // Merge task-specific and/or target-specific options with these defaults.
     var options = this.options({
 			gitDirectory: null,

@@ -1,6 +1,6 @@
-# grunt-wordpress-auto-versioning
+# grunt-wordpress-git-hash-versioning
 
-> Adds the current commit hash to the version of a WordPress theme. Useful for keeping track of which version is on which environment while we are still in development. This also works for plugin files too.
+> Adds the current commit hash to the version of a WordPress theme CSS file or a plugin file. Useful for keeping track of which version is on which environment while we are still in development.
 
 ## Getting Started
 This plugin requires Grunt `~0.4.5`
@@ -14,17 +14,17 @@ npm install grunt-wordpress-auto-versioning --save-dev
 Once the plugin has been installed, it may be enabled inside your Gruntfile with this line of JavaScript:
 
 ```js
-grunt.loadNpmTasks('grunt-wordpress-auto-versioning');
+grunt.loadNpmTasks('grunt-wordpress-git-hash-versioning');
 ```
 
-## The "wordpress_auto_versioning" task
+## The "wordpress_git_hash_versioning" task
 
 ### Overview
-In your project's Gruntfile, add a section named `wordpress_auto_versioning` to the data object passed into `grunt.initConfig()`.
+In your project's Gruntfile, add a section named `wordpress_git_hash_versioning` to the data object passed into `grunt.initConfig()`.
 
 ```js
 grunt.initConfig({
-  wordpress_auto_versioning: {
+  wordpress_git_hash_versioning: {
     options: {},
     your_target: {
 			files: 'destination-file' : 'source-file'
@@ -58,7 +58,7 @@ Most of the time we just need to just use the default values to append the short
 
 ```js
 grunt.initConfig({
-  wordpress_auto_versioning: {
+  wordpress_git_hash_versioning: {
 		dist: {
 			files: {
 				'_assets/sass/style.scss': '_assets/sass/style.scss'
@@ -72,7 +72,7 @@ We can do the same thing with the main file in a plugin.
 
 ```js
 grunt.initConfig({
-  wordpress_auto_versioning: {
+  wordpress_git_hash_versioning: {
 		dist: {
 			files: {
 				'myplugin.php': 'myplugin.php'

@@ -29,7 +29,7 @@ module.exports = function(grunt) {
     },
 
     // Configuration to be run (and then tested).
-    wordpress_auto_versioning: {
+    wordpress_git_hash_versioning: {
       test_sass_file: {
         options: {
 					gitDirectory: 'tmp',
@@ -74,7 +74,7 @@ module.exports = function(grunt) {
 
   // Whenever the "test" task is run, first clean the "tmp" dir, then run this
   // plugin's task(s), then test the result.
-  grunt.registerTask('test', ['clean', 'setup_test_git_repo', 'wordpress_auto_versioning', 'nodeunit']);
+  grunt.registerTask('test', ['clean', 'setup_test_git_repo', 'wordpress_git_hash_versioning', 'nodeunit']);
 
   // By default, lint and run all tests.
   grunt.registerTask('default', ['jshint', 'test']);
