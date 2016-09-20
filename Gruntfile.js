@@ -32,7 +32,7 @@ module.exports = function(grunt) {
     wordpress_auto_versioning: {
       test_sass_file: {
         options: {
-					gitDirectory: 'test',
+					gitDirectory: 'tmp',
 					shortHash: false,
 				},
         files: {
@@ -41,7 +41,7 @@ module.exports = function(grunt) {
       },
       test_plugin_file: {
 				options: {
-					gitDirectory: 'test',
+					gitDirectory: 'tmp',
 				},
         files: {
           'tmp/test_plugin_file': 'test/fixtures/plugin.php'
@@ -53,7 +53,6 @@ module.exports = function(grunt) {
     nodeunit: {
       tests: ['test/*_test.js']
     }
-
   });
 
   // Actually load this plugin's task(s).
@@ -64,9 +63,18 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-contrib-clean');
   grunt.loadNpmTasks('grunt-contrib-nodeunit');
 
+	// Yeah... this is not going to work for windows
+	// TODO - make more robust if someone wants this for windows
+	grunt.registerTask('setup-test-git-repo', 'Moves current repo into ./tmp so we can use its history for unit testing', function(){
+		var shell = require('child_process');
+		grunt.file.mkdir('tmp/.git');
+		shell.execSync('cp -r .git/ tmp/.git/');
+		shell.execSync('git checkout 008ecb4', {cwd: 'tmp'}); // checkout the initial commit
+	});
+
   // Whenever the "test" task is run, first clean the "tmp" dir, then run this
   // plugin's task(s), then test the result.
-  grunt.registerTask('test', ['clean', 'wordpress_auto_versioning', 'nodeunit']);
+  grunt.registerTask('test', ['clean', 'setup-test-git-repo', 'wordpress_auto_versioning', 'nodeunit']);
 
   // By default, lint and run all tests.
   grunt.registerTask('default', ['jshint', 'test']);
